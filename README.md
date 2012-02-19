@@ -51,8 +51,11 @@ A sample build.json file can be produced with the option `init`
 
 The following properties are required:
 
-* `input.include`: list of expressions or files to be processed
-* `input.exclude`: list of expressions or files to be excluded
+* `input`
+	* `include`: list of expressions or files to be processed
+	* `exclude`: list of expressions or files to be excluded
+* `output`: the properties are the same as the ones defined in the [fstream](https://github.com/isaacs/fstream) module
+	* `path`: path to the generated files
 
 The following properties are optional:
 
