@@ -60,6 +60,8 @@ The following properties are optional:
 
 To run the tool with DEBUG information, set the DEBUG environment variable to a list of comma separated values:
 
+	DEBUG=ekam,build,include,file,js-ast ekam --build src/build.json
+
 * ekam
 * build
 * include
@@ -68,7 +70,7 @@ To run the tool with DEBUG information, set the DEBUG environment variable to a 
 
 ## Example
 
-Let's say we have to build a single javascript file split up in two files as well as its minified and debug versions. The example is provided in the examples/ directory.
+Let's say we have to build a single javascript file split up in two files as well as its minified and debug versions. The example is provided in the examples/example1 directory.
 
 The input files are defined under the src/ directory:
 
@@ -104,7 +106,7 @@ console.log('DEBUG', ...)
 //uglify("file.js")
 ```
 
-When the `ekam` command is run with  it creates the following files. Note that the www/ directory is automatically created if it does not exist already.
+When the `ekam` command is run, it creates the following files (note that the www/ directory is automatically created if it does not exist already):
 
 * www/file.js - concatenation of file1.js and file2.js
 * www/file.debug.js - same as file.js but with debug commands
