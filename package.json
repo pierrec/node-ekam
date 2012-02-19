@@ -10,6 +10,9 @@
   , "url": "git://github.com/pierrec/node-ekam.git"
   }
 , "main": "./lib/ekam.js"
+, "bin": {
+    "ekam": "./bin/ekam"
+  }
 , "bugs": { "url" : "http://github.com/pierrec/node-ekam/issues" }
 , "licenses":
   [ {
