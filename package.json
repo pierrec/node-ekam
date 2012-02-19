@@ -1,0 +1,34 @@
+{
+  "author": "Pierre Curto <pierre.curto@gmail.com>"
+, "name": "ekam"
+, "description": "Package builder with includes"
+, "keywords": ["build","builder","include"]
+, "version": "0.0.0"
+, "homepage": "http://github.com/pierrec/node-ekam"
+, "repository": {
+    "type": "git"
+  , "url": "git://github.com/pierrec/node-ekam.git"
+  }
+, "main": "./lib/ekam.js"
+, "bugs": { "url" : "http://github.com/pierrec/node-ekam/issues" }
+, "licenses":
+  [ {
+      "type": "MIT"
+    , "url": "http://github.com/pierrec/node-ekam/raw/master/LICENSE"
+    }
+  ]
+, "engines": {
+    "node": ">= 0.6"
+  }
+, "dependencies": {
+    "async": ">= 0.1.16"
+  , "commander": ">= 0.5"
+  , "debug": ">= 0.5"
+  , "fstream": ">= 0.1"
+  , "fileset": ">= 0.1"
+  , "uglify-js": ">= 1.2"
+  , "atok-parser": ">= 0.0.4"
+  }
+, "devDependencies": {}
+, "optionalDependencies": {}
+}

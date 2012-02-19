@@ -1,0 +1,59 @@
+#!/usr/bin/env node
+
+var fs = require('fs')
+var path = require('path')
+
+var program = require('commander')
+var debug = require('debug')('ekam')
+
+var packageInfo = require('../package.json')
+var Builder = require('..')
+
+var defaultBuild = {
+	"input": {
+		"include": "**/*.js"
+	, "exclude": "*.json"
+	}
+,	"output": {
+		"path": "../build"
+	, "mode": "0755"
+	, "clean": true
+	}
+,	"uglify": {
+		"mangle": {
+			"defines": {
+				"DEBUG": [ "name", "false" ]
+			}
+		}
+	,	"squeeze": {
+			"make_seqs": true
+		,	"dead_code": true
+		}
+	,	"gen": {
+		}
+	}
+}
+
+program
+  .version(packageInfo.version)
+  .option(
+	  '-b, --build [file]'
+	, 'Use the specified build file (in json format)'
+	, './build.json'
+	)
+	.option(
+	  '-i, --init'
+	, 'Creates a default sample build file (in json format)'
+	, null
+	)
+  .parse(process.argv)
+
+if (program.init) {
+	debug('creating default build file')
+	fs.writeFileSync('build.json', JSON.stringify(defaultBuild))
+} else {
+	if (program.build) {
+		debug('build file: %s', program.build)
+		Builder( program.build )
+	}
+}
