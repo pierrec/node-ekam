@@ -75,6 +75,8 @@ To run the tool with DEBUG information, set the DEBUG environment variable to a 
 
 Let's say we have to build a single javascript file split up in two files as well as its minified and debug versions. The example is provided in the examples/example1 directory.
 
+__Important__ only files with no parent dependency get built in the output directory.
+
 The input files are defined under the src/ directory:
 
 * src/file1.js
@@ -106,7 +108,15 @@ console.log('DEBUG', ...)
 * src/file.min.js
 
 ``` javascript
-//uglify("file.js")
+//uglify("_file.js")
+```
+
+* src/_file.js
+
+This is a temporary file that collects the content for the minified version.
+
+``` javascript
+//include("file1.js", "file2.js")
 ```
 
 When the `ekam` command is run, it creates the following files (note that the www/ directory is automatically created if it does not exist already):
