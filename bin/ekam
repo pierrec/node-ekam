@@ -5,7 +5,7 @@ var path = require('path')
 
 var program = require('commander')
 var debug = require('debug')('ekam')
-var _eval = require('../../node-eval')
+var _eval = require('node-eval')
 
 var packageInfo = require('../package.json')
 var Builder = require('..')
