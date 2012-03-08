@@ -2,9 +2,10 @@
 
 ## Synopsis
 
-Ekam is yet another package builder for node, designed to handle file includes, regardless of the file format, although it is primarily aimed at building javascript, html and css files.
+Ekam is yet another build tool for node, designed to handle file includes, regardless of the file format, although it is primarily aimed at building javascript, html and css files. It comes as a single command line utility.
 
-As of version 0.0.0, only javascript is supported, although html and css are planned and easy to add, as well as other formats.
+As of the current version, only JavaScript is supported, although html and css are planned and easy to add, as well as other formats.
+
 
 ## Download
 
@@ -12,21 +13,40 @@ It is published on node package manager (npm). To install, do:
 
     npm install ekam -g
 
+
 ## Usage
 
-Ekam takes a json file containing information about what it has to do.
+    ekam --help
+
+    Usage: ekam [options]
+
+      Options:
+
+        -h, --help                     output usage information
+        -V, --version                  output the version number
+        -b, --build <js or json file>  Use the specified build file
+        -i, --init                     Creates a default sample build file
+
+
+
+Ekam takes either a json file or a JavaScript file containing information about what it has to do.
 
 	ekam --build src/build.json
+or
+	ekam --build src/build.js
 
-A sample build.json file can be produced with the option `init`
+
+Sample build.json and build.js files can be produced with the option `init`
 
 	ekam --init
+
+* build.json
 
 ``` javascript
 {
 	"input": {
 		"include": "**/*.js"
-	, "exclude": "*.json"
+	, "exclude": "build.json build.js"
 	}
 ,	"output": {
 		"path": "../build"
@@ -49,13 +69,45 @@ A sample build.json file can be produced with the option `init`
 }
 ```
 
+* build.js
+
+``` javascript
+build(
+	{
+		"input": {
+			"include": "**/*.js"
+		, "exclude": "build.json build.js"
+		}
+	,	"output": {
+			"path": "../build"
+		, "mode": "0755"
+		, "clean": true
+		}
+	,	"uglify": {
+			"mangle": {
+				"defines": {
+					"DEBUG": [ "name", "false" ]
+				}
+			}
+		,	"squeeze": {
+				"make_seqs": true
+			,	"dead_code": true
+			}
+		,	"gen": {
+			}
+		}
+	}
+)
+```
+
+
 The following properties are required:
 
 * `input`
-	* `include`: list of expressions or files to be processed
-	* `exclude`: list of expressions or files to be excluded
+	* `include` (_String_): list of expressions or files to be processed
+	* `exclude` (_String_): list of expressions or files to be excluded
 * `output`: the properties are the same as the ones defined in the [fstream](https://github.com/isaacs/fstream) module
-	* `path`: path to the generated files
+	* `path` (_String_): path to the generated files
 
 The following properties are optional:
 
@@ -63,13 +115,14 @@ The following properties are optional:
 
 To run the tool with DEBUG information, set the DEBUG environment variable to a list of comma separated values:
 
-	DEBUG=ekam,build,include,file,js-ast ekam --build src/build.json
+	DEBUG=ekam,build,include,file,js-parser,js-ast ekam --build src/build.json
 
 * ekam
 * build
 * include
 * file
 * js-ast
+
 
 ## Example
 

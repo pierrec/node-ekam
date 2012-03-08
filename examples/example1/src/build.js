@@ -1,3 +1,4 @@
+build(
 {
 	"input": {
 		"include": "**/*.js"
@@ -21,3 +22,7 @@
 	,	"gen": {}
 	}
 }
+, function (err) {
+ console.log('done')
+}
+)
