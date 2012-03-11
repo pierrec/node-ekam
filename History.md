@@ -1,3 +1,9 @@
+0.0.4 / 2012-03-11
+==================
+
+* Added __dirname and __filename when building from a .js file
+* Added missing dependency (inherits)
+
 0.0.3 / 2012-03-08
 ==================
 
