@@ -1,7 +1,10 @@
+var path = require('path')
+
 echo('Building...')
 
-mkdir('output')
-cd('output')
+var dir = path.join( __dirname, 'output' )
+mkdir( dir )
+cd( dir )
 echo(
 	'//var DEBUG=1\n'
 ).to('in.js')

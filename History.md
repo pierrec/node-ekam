@@ -1,3 +1,9 @@
+0.0.5 / 2012-03-11
+==================
+
+* Support multiple entries for input properties
+* Windows support
+
 0.0.4 / 2012-03-11
 ==================
 
