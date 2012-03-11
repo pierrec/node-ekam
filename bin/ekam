@@ -87,6 +87,8 @@ if (program.init) {
 				, callback || done
 				)
 			}
+		sandbox.__filename = configFile
+		sandbox.__dirname = configPath
 		// Hack to pass the modified String.prototype
 		sandbox.__StringPrototype = String.prototype
 
