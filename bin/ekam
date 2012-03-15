@@ -93,6 +93,7 @@ if (program.init) {
 		sandbox.__StringPrototype = String.prototype
 
 		_eval(
+			// Update String
 			'for(var k in __StringPrototype)'
 		+ 'String.prototype[k]=__StringPrototype[k];'
 		+	'__StringPrototype=undefined;'
