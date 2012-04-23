@@ -10,15 +10,16 @@ var _eval = require('eval')
 var packageInfo = require('../package.json')
 var Builder = require('..')
 
+var defaultBuildfiles = 'build.json build.js'
 var defaultBuild = {
 	"input": {
 		"include": "**/*.js"
-	, "exclude": "build.json build.js"
+	,	"exclude": defaultBuildfiles
 	}
 ,	"output": {
 		"path": "../build"
-	, "mode": "0755"
-	, "clean": true
+	,	"mode": "0755"
+	,	"clean": true
 	}
 ,	"uglify": {
 		"mangle": {
@@ -40,11 +41,16 @@ program
   .option(
 	  '-b, --build <js or json file>'
 	, 'Use the specified build file'
-	, path.join( '.', 'build.json' )
+	, path.resolve( defaultBuildfiles[0] )
 	)
 	.option(
 	  '-i, --init'
-	, 'Creates a default sample build file'
+	, 'Creates default sample build files (' + defaultBuildfiles + ')'
+	, null
+	)
+	.option(
+	  '-f, --force'
+	, 'Overwrite existing build files'
 	, null
 	)
   .parse(process.argv)
@@ -55,27 +61,36 @@ function done (err) {
 }
 
 if (program.init) {
+	// Indented default config
 	var defaultBuildString = JSON.stringify(defaultBuild, null, 2)
 
-	debug('creating default build files %s and %s', 'build.json', 'build.js')
+	// JSON file, JS file
+	var files = defaultBuildfiles.split(' ')
+	var filesContent = [defaultBuildString, 'build(' + defaultBuildString + ')']
 
-	// JSON file
-	fs.writeFileSync('build.json', defaultBuildString)
+	if (program.force || !files.every(path.existsSync)) {
 
-	// JS file
-	fs.writeFileSync('build.js', 'build(' + defaultBuildString + ')')
+		debug('creating default build files %s', defaultBuildfiles)
+
+		files.forEach(function (file, i) {
+			fs.writeFileSync(file, filesContent[i])
+		})
+
+	} else {
+		done('File(s) exist, use --force to overwrite')
+	}
 
 } else if (program.build) {
 	var config = program.build
-	var configFile = path.resolve( process.cwd(), config )
+	var configFile = path.resolve( config )
 	var configPath = path.dirname(configFile)
 
 	debug('build file: %s -> %s', config, configFile)
 	if ( /\.json$/.test(config) ) {
 		Builder(
 			require(configFile)
-		, configPath
-		, done
+		,	configPath
+		,	done
 		)
 	} else {
 		var sandbox = require('shelljs')
@@ -83,8 +98,8 @@ if (program.init) {
 		sandbox.build = function (data, callback) {
 				Builder(
 					data
-				, configPath
-				, callback || done
+				,	configPath
+				,	callback || done
 				)
 			}
 		sandbox.__filename = configFile
@@ -95,7 +110,7 @@ if (program.init) {
 		_eval(
 			// Update String
 			'for(var k in __StringPrototype)'
-		+ 'String.prototype[k]=__StringPrototype[k];'
+		+	'String.prototype[k]=__StringPrototype[k];'
 		+	'__StringPrototype=undefined;'
 		+	fs.readFileSync(config)
 		, config

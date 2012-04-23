@@ -1,3 +1,9 @@
+0.0.6 / 2012-04-23
+==================
+
+* Windows: use `path.resolve()` to make sure the drive is set
+* `ekam --init` checks for existing files. Use `ekam --init --force` to overwrite them
+
 0.0.5 / 2012-03-15
 ==================
 

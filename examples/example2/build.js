@@ -15,4 +15,4 @@ echo([
 ].join('\n')
 ).to('out.js')
 
-build({input: {include: 'output/*'}, output: {path: '.'}})
+build({input: { include: 'output/*'}, output: {path: '.'}})
