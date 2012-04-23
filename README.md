@@ -25,7 +25,8 @@ It is published on node package manager (npm). To install, do:
         -h, --help                     output usage information
         -V, --version                  output the version number
         -b, --build <js or json file>  Use the specified build file
-        -i, --init                     Creates a default sample build file
+        -i, --init                     Creates default sample build files (build.json build.js)
+    	-f, --force                    Overwrite existing build files
 
 
 
