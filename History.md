@@ -1,7 +1,7 @@
-0.0.7 / 2012-05-02
+0.0.7 / 2012-05-06
 ==================
 
-* `build()` provides the list of created files to the callback (Array)
+* `build(err, files, inputFiles)` provides the list of created and root input files to the callback (Array, Array)
 
 0.0.6 / 2012-04-23
 ==================
