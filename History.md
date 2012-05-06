@@ -1,3 +1,8 @@
+0.0.7 / 2012-05-02
+==================
+
+* `build()` provides the list of created files to the callback (Array)
+
 0.0.6 / 2012-04-23
 ==================
 

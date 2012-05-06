@@ -38,7 +38,7 @@ or
 	ekam --build src/build.js
 
 
-Sample build.json and build.js files can be produced with the option `init`
+Sample build.json and build.js files can be produced with the option `init` (overwrite existing files with the `force` option)
 
 	ekam --init
 

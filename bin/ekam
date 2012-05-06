@@ -55,9 +55,9 @@ program
 	)
   .parse(process.argv)
 
-function done (err) {
+function done (err, roots) {
 	if (err) return console.error(err)
-	debug('Builder DONE.')
+	debug('Builder DONE (%d files).', roots.length)
 }
 
 if (program.init) {

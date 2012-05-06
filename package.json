@@ -3,7 +3,7 @@
 , "name": "ekam"
 , "description": "Package builder with includes"
 , "keywords": ["build","builder","include","make"]
-, "version": "0.0.6"
+, "version": "0.0.7"
 , "homepage": "http://github.com/pierrec/node-ekam"
 , "repository": {
     "type": "git"

@@ -22,7 +22,7 @@ build(
 	,	"gen": {}
 	}
 }
-, function (err) {
- console.log('done')
+, function (err, files) {
+ console.log('done', files)
 }
 )
