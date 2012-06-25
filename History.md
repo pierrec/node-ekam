@@ -1,3 +1,9 @@
+0.0.8 / 2012-05-14
+==================
+
+* Provide target dir listing before build (use case: git rm <delta>)
+* Added command `//eval()`: javascript eval, inserts the results into the stream
+
 0.0.7 / 2012-05-06
 ==================
 
