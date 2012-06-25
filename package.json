@@ -31,7 +31,7 @@
   , "fileset": ">= 0.1.2"
   , "uglify-js": ">= 1.2"
   , "atok-parser": "0.1.1"
-  , "eval": "0.0.3"
+  , "eval": "0.0.7"
   , "shelljs": "*"
   , "inherits": ">= 1.0"
   }
