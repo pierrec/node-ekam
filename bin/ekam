@@ -68,7 +68,7 @@ if (program.init) {
 	var files = defaultBuildfiles.split(' ')
 	var filesContent = [defaultBuildString, 'build(' + defaultBuildString + ')']
 
-	if (program.force || !files.every(path.existsSync)) {
+	if (program.force || !files.every(fs.existsSync)) {
 
 		debug('creating default build files %s', defaultBuildfiles)
 
