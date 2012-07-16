@@ -3,7 +3,7 @@
 , "name": "ekam"
 , "description": "Package builder with includes"
 , "keywords": ["build","builder","include","make"]
-, "version": "0.0.8"
+, "version": "0.0.9"
 , "homepage": "http://github.com/pierrec/node-ekam"
 , "repository": {
     "type": "git"
@@ -30,8 +30,8 @@
   , "fstream": ">= 0.1"
   , "fileset": ">= 0.1.2"
   , "uglify-js": ">= 1.2"
-  , "atok-parser": "0.1.1"
-  , "eval": "0.0.7"
+  , "atok-parser": ">= 0.3.1"
+  , "eval": ">= 0.0.4"
   , "shelljs": "*"
   , "inherits": ">= 1.0"
   }

@@ -13,7 +13,7 @@ describe('command line', function () {
 	function cleanup (done) {
 		files.forEach(function (file) {
 			var f = path.resolve(__dirname, file)
-			if ( path.existsSync(f) ) fs.unlinkSync(f)
+			if ( fs.existsSync(f) ) fs.unlinkSync(f)
 		})
 		done()
 	}
@@ -26,7 +26,7 @@ describe('command line', function () {
 			child_process.exec(
 				ekamCommand + ' --init'
 			,	function () {
-					assert.equal( files.every(path.existsSync), true )
+					assert.equal( files.every(fs.existsSync), true )
 
 					done()
 				}
@@ -40,7 +40,7 @@ describe('command line', function () {
 					child_process.exec(
 						ekamCommand + ' --init --force'
 					,	function () {
-							assert.equal( files.every(path.existsSync), true )
+							assert.equal( files.every(fs.existsSync), true )
 
 							done()
 						}
@@ -56,7 +56,7 @@ describe('command line', function () {
 					child_process.exec(
 						ekamCommand + ' --init'
 					,	function () {
-							assert.equal( files.every(path.existsSync), true )
+							assert.equal( files.every(fs.existsSync), true )
 							assert.equal( stderr.length > 0, true )
 
 							done()
