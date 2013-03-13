@@ -2,6 +2,7 @@
 ===================
 
 * Updated to support eval 0.1
+* Compatible with atok 0.4.x
 
 0.0.9 / 2012-07-16
 ==================
